@@ -1,0 +1,33 @@
+---
+import { optional } from "astro:schema"
+import {type LaunchesQuery } from "../types/index"
+import CardLaunch from "./CardLaunch.astro"
+import { getLaunches } from "../services/spacex"
+
+
+
+const launches = await getLaunches()
+
+---
+<div class="flex w-full justify-center">
+
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+        {
+            launches.map((launch) => (
+                
+                <CardLaunch
+                    name={launch.name}
+                    id={launch.id}
+                    date={launch.date_utc}
+                    success={launch.success}
+                    img={launch.links.patch.small}
+                    flight_number={launch.flight_number}
+                    details={launch.details}
+
+                />
+            ))
+    }
+
+</div>
+</div>
