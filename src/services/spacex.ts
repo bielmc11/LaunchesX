@@ -1,4 +1,4 @@
-import type { LaunchesQuery } from "../types"
+import type { Launch,LaunchesQuery } from "../types"
 
 export const getLaunches = async () => {
     const res = await fetch('https://api.spacexdata.com/v5/launches/query', {
@@ -10,7 +10,7 @@ export const getLaunches = async () => {
             query: {},
             options: {
                 sort: {data_unix: 'desc'},
-                limit: 4
+                limit: 12
             }
         })
     
@@ -23,6 +23,6 @@ export const getLaunches = async () => {
 
 export const getLaunchesById = async (id: string) => {
     const res = await fetch(`https://api.spacexdata.com/v5/launches/${id}`)
-    const data = await res.json() as LaunchesQuery
+    const data = await res.json() as Launch
     return data
 }

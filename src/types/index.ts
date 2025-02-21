@@ -12,7 +12,7 @@ export interface LaunchesQuery {
   nextPage: number | null;
 }
 
-interface Launch {
+export interface Launch {
   fairings: any;
   links: any;
   static_fire_date_utc: string;
