@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets"
 import Layout from "../../layouts/Layout.astro"
 import { getLaunches, getLaunchesById } from "../../services/spacex"
 
@@ -9,6 +10,8 @@ if(id){
     launches = await getLaunchesById(id)
     console.log('ahora mi launches es:',launches)
 }
+
+console.log('namee == ',launches?.name)
 
 
 
@@ -22,8 +25,10 @@ export async function getStaticPaths() {
 
 <Layout>
     <div class="text-white flex flex-col items-center">
-        <img src={launches?.links.patch.small} alt="">
-        <h2 class="text-2xl font-bold tracking-wide">{launches?.name}</h2>
-    </div>
+        <picture>
+            <Image transition:name={id} height={200} width={200} src={launches?.links.patch.small} alt="">
+        </picture>
+            <h2 class=" text-2xl font-bold tracking-wide mt-4 " >{launches?.name}</h2>
+        </div>
     
 </Layout>
