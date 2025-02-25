@@ -8,7 +8,6 @@ let launches;
 
 if (id) {
   launches = await getLaunchesById(id);
-  console.log("mi descripcion es: ", launches?.details, launches?.id);
 }
 
 export const getStaticPaths = async () => {

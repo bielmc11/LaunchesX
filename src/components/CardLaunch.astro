@@ -1,7 +1,4 @@
 ---
-import { pathHasLocale } from "astro:i18n";
-import { undefined } from "astro:schema";
-
 interface Props {
   name: string;
   date: string;
@@ -10,14 +7,18 @@ interface Props {
   id: string;
   flight_number: number;
   details: string;
+
+  chipPending: boolean;
 }
 const pathname = Astro.url.pathname;
 
-const { name, success, details, img, id, flight_number } = Astro.props;
+const { name, success, details, img, id, flight_number, chipPending } =
+  Astro.props;
 const launchStatus = success ? "Success" : "Failure";
 
-const navigateTo =
-  pathname === "/upcoming" ? `/upcoming/${id}` : `/launch/${id}`;
+/* ! TENGO QUE UTILIZAR EL CHIP PENDIENTE =====> EN VEZ DE PATHNAME*/
+
+const navigateTo = chipPending ? `/upcoming/${id}` : `/launch/${id}`;
 ---
 
 <article
@@ -36,7 +37,7 @@ const navigateTo =
 
       <header class="p-4 flex-grow">
         {
-          pathname === "/upcoming" ? (
+          chipPending ? (
             <span class="px-2 py-0.5  text-xs font-bold rounded-full opacity-90 bg-yellow-400 text-yellow-900">
               Pendiente
             </span>

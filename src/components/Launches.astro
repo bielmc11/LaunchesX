@@ -4,9 +4,10 @@ import CardLaunch from "./CardLaunch.astro";
 
 interface Props {
   launches: Launch[];
+  chipPending: boolean;
 }
 
-const { launches } = Astro.props;
+const { launches, chipPending } = Astro.props;
 ---
 
 <div class="flex w-full justify-center">
@@ -14,6 +15,7 @@ const { launches } = Astro.props;
     {
       launches.map((launch) => (
         <CardLaunch
+        chipPending={chipPending}
           name={launch.name}
           id={launch.id}
           date={launch.date_utc}
