@@ -1,12 +1,14 @@
 ---
 import { optional } from "astro:schema"
-import {type LaunchesQuery } from "../types/index"
+import {type Launch, type LaunchesQuery } from "../types/index"
 import CardLaunch from "./CardLaunch.astro"
-import { getLaunches } from "../services/spacex"
 
+interface Props {
+    launches: Launch[]
+}
 
+const { launches } = Astro.props 
 
-const launches = await getLaunches()
 
 ---
 <div class="flex w-full justify-center">
@@ -21,7 +23,7 @@ const launches = await getLaunches()
                     id={launch.id}
                     date={launch.date_utc}
                     success={launch.success}
-                    img={launch.links.patch.small}
+                    img={launch.links.patch.small ?? 'DALL·E 2025-02-25 10.45.33 - A placeholder image indicating that no image is available for a rocket article. The image should feature a faded or silhouette-style rocket with a que (1).webp'}
                     flight_number={launch.flight_number}
                     details={launch.details}
 

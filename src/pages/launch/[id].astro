@@ -1,34 +1,35 @@
 ---
-import { Image } from "astro:assets"
-import Layout from "../../layouts/Layout.astro"
-import { getLaunches, getLaunchesById } from "../../services/spacex"
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import { getLaunches, getLaunchesById } from "../../services/spacex";
+import LuanchDetails from "../../components/LuanchDetails.astro";
 
-const { id } = Astro.params
-let launches
+const { id } = Astro.params;
+let launches;
 
-if(id){
-    launches = await getLaunchesById(id)
-    console.log('ahora mi launches es:',launches)
+if (id) {
+  launches = await getLaunchesById(id);
 }
 
-console.log('namee == ',launches?.name)
-
-
-
 export async function getStaticPaths() {
-    const launches = await getLaunches()
-    return launches.map((launch) =>(
-        {params: {id: launch.id}}
-    ))
+  const launches = await getLaunches();
+  return launches.map((launch) => ({ params: { id: launch.id } }));
 }
 ---
 
 <Layout>
-    <div class="text-white flex flex-col items-center">
-        <picture>
-            <Image transition:name={id} height={200} width={200} src={launches?.links.patch.small} alt="">
-        </picture>
-            <h2 class=" text-2xl font-bold tracking-wide mt-4 " >{launches?.name}</h2>
-        </div>
-    
-</Layout>
+  <!-- <div class="text-white flex flex-col items-center">
+    <picture>
+      <Image
+        transition:name={id}
+        height={200}
+        width={200}
+        src={launches?.links.patch.small}
+        alt=""
+      />
+      <h2 class="text-2xl font-bold tracking-wide mt-4">{launches?.name}</h2>
+    </picture> -->
+
+    <LuanchDetails name={launches?.name} date={launches?.date_utc} success={launches?.success} img={launches?.links.patch.small ?? '/DALL·E 2025-02-25 10.45.33 - A placeholder image indicating that no image is available for a rocket article. The image should feature a faded or silhouette-style rocket with a que (1).webp'} description={launches?.details} />
+  </div></Layout
+>
