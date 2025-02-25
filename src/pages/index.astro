@@ -1,16 +1,11 @@
 ---
-import Launches from '../components/Launches.astro';
-import Layout from '../layouts/Layout.astro';
-import { getLaunches } from '../services/spacex';
+import Launches from "../components/Launches.astro";
+import Layout from "../layouts/Layout.astro";
+import { getLaunches } from "../services/spacex";
 
-const launches = await getLaunches()
-
-
-
+const launches = await getLaunches();
 ---
 
 <Layout>
-	
-	<Launches launches={launches} />
-	
+  <Launches launches={launches} />
 </Layout>

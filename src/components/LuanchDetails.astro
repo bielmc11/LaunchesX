@@ -1,30 +1,45 @@
 ---
 import { Image } from "astro:assets";
-import { undefined } from "astro:schema";
 
-interface Pops{
-    name: string;
-    date: string;
-    success: boolean
-    img: string;
-    description: string;
+interface Pops {
+  name: string;
+  date: string;
+  success: boolean;
+  img: string;
+  description: string;
 }
 
-const {name, date, success, img,description} = Astro.props
-const pathname = Astro.url.pathname.split('/')[1]
+const { id } = Astro.params;
 
-const classChipButton = success === true ? 'bg-green-400 text-green-900' : 'bg-red-400 text-red-900'
+const { name, date, success, img, description } = Astro.props;
+const pathname = Astro.url.pathname.split("/")[1];
+
+const classChipButton =
+  success === true ? "bg-green-400 text-green-900" : "bg-red-400 text-red-900";
 ---
 
 <div class="flex flex-col text-white items-center px-4 sm:px-8">
-    <picture>
-        <Image src={img} width={250} height={250} class="rounded" alt="imagen de la mision"/>
-    </picture>
-    <h2 class="text-2xl font-bold tracking-wide mt-4 " >{name}</h2>
-    <p class="text-gray-300 text-sm">{date}</p>
-    {
-        pathname !== 'upcoming' && (<p class={`${classChipButton} text-sm rounded-full py-0.5 px-2 mt-2`} >{success ? 'Success' : 'Failure'}</p>)
-    }
-    
-    <p class="py-2 sm:py-8 text-base/7 sm:text-center">{description ?? 'No hay descripción'}</p>
+  <picture>
+    <Image
+      src={img}
+      transition:name={id}
+      width={250}
+      height={250}
+      class="rounded"
+      alt="imagen de la mision"
+    />
+  </picture>
+  <h2 class="text-2xl font-bold tracking-wide mt-4">{name}</h2>
+  <p class="text-gray-300 text-sm">{date}</p>
+  {
+    pathname !== "upcoming" && (
+      <p class={`${classChipButton} text-sm rounded-full py-0.5 px-2 mt-2`}>
+        {success ? "Success" : "Failure"}
+      </p>
+    )
+  }
+
+  <p class="py-2 sm:py-8 text-base/7 sm:text-center">
+    {description ?? "No hay descripción"}
+  </p>
 </div>

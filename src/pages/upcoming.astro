@@ -1,28 +1,11 @@
 ---
 import Launches from "../components/Launches.astro";
 import Layout from "../layouts/Layout.astro";
-import {  getUpcomingLaunches } from "../services/spacex";
+import { getUpcomingLaunches } from "../services/spacex";
 
-
-const launches = await getUpcomingLaunches()
+const launches = await getUpcomingLaunches();
 ---
 
 <Layout>
-  <!-- <div class="text-white mb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-    
-
-    {
-      launches.map((launch: any) => (
-        <div class="bg-gray-800 rounded-lg p-4 shadow-md">
-          <img src={launch.links.patch.small ?? '/DALL·E 2025-02-25 10.45.33 - A placeholder image indicating that no image is available for a rocket article. The image should feature a faded or silhouette-style rocket with a que (1).webp'} alt="No hay imagen"/>
-          <h2 class="text-2xl font-bold tracking-wide">{launch.name}</h2>
-          <p class="text-gray-300">{launch.date_utc}</p>
-        </div>
-      ))
-    }
-    </div> -->
-
-<Launches launches={launches} />
-    
-    
+  <Launches launches={launches} />
 </Layout>

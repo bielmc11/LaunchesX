@@ -1,55 +1,63 @@
 ---
-import { pathHasLocale } from 'astro:i18n';
-import { undefined } from 'astro:schema';
+import { pathHasLocale } from "astro:i18n";
+import { undefined } from "astro:schema";
 
-interface Props{
-    name: string;
-    date: string;
-    success: boolean
-    img: string;
-    id:string
-    flight_number: number;
-    details: string
+interface Props {
+  name: string;
+  date: string;
+  success: boolean;
+  img: string;
+  id: string;
+  flight_number: number;
+  details: string;
 }
-const pathname = Astro.url.pathname
+const pathname = Astro.url.pathname;
 
-const {name, success, details,img,id, flight_number} = Astro.props
-const launchStatus = success ? 'Success' : 'Failure'
+const { name, success, details, img, id, flight_number } = Astro.props;
+const launchStatus = success ? "Success" : "Failure";
 
-const navigateTo = pathname === '/upcoming' ? `/upcoming/${id}` : `/launch/${id}`
-
+const navigateTo =
+  pathname === "/upcoming" ? `/upcoming/${id}` : `/launch/${id}`;
 ---
 
-<article class="rounded-lg bg-gray-800 hover:bg-gray-700 hover:border-gray-500 shadow-md border border-gray-700 hover:scale-105 cursor-pointer transition-all p-4 ">
-       <a href={navigateTo}>
-    <div class="flex flex-col text-white ">
-        <picture>
-            <img transition:name=`${id}` src={img} alt=`Patch launch for ${name}` class="mb-4 mx-auto rounded-lg p-4">
-        </picture>
+<article
+  class="rounded-lg bg-gray-800 hover:bg-gray-700 hover:border-gray-500 shadow-md border border-gray-700 hover:scale-105 cursor-pointer transition-all p-4"
+>
+  <a href={navigateTo}>
+    <div class="flex flex-col text-white">
+      <picture>
+        <img
+          transition:name=`${id}`
+          src={img}
+          alt=`Patch launch for ${name}`
+          class="mb-4 mx-auto rounded-lg p-4"
+        />
+      </picture>
 
-        <header class="p-4 flex-grow">
-            {
-                pathname === '/upcoming' ? (<span class="px-2 py-0.5  text-xs font-bold rounded-full opacity-90 bg-yellow-400 text-yellow-900">Pendiente</span>) : (<span
-            class:list={[
-                'px-2 py-0.5  text-xs font-bold rounded-full opacity-90 ',
-                {
-                    'bg-green-400 text-green-900': success,
-                    'bg-red-400 text-red-900': !success,
-                }
-            ]}
-            >
-                {launchStatus}
+      <header class="p-4 flex-grow">
+        {
+          pathname === "/upcoming" ? (
+            <span class="px-2 py-0.5  text-xs font-bold rounded-full opacity-90 bg-yellow-400 text-yellow-900">
+              Pendiente
             </span>
-)
-            }
-            
-        </header>
-        <h2 class="bold text-2xl"> {name}</h2>
-        <h3 class="bold">Flight #{flight_number}</h3>  
-        <span class="opacity-60 line-clamp-2">{details}</span>   
-        
+          ) : (
+            <span
+              class:list={[
+                "px-2 py-0.5  text-xs font-bold rounded-full opacity-90 ",
+                {
+                  "bg-green-400 text-green-900": success,
+                  "bg-red-400 text-red-900": !success,
+                },
+              ]}
+            >
+              {launchStatus}
+            </span>
+          )
+        }
+      </header>
+      <h2 class="bold text-2xl">{name}</h2>
+      <h3 class="bold">Flight #{flight_number}</h3>
+      <span class="opacity-60 line-clamp-2">{details}</span>
     </div>
-
-    </a>
-    
+  </a>
 </article>

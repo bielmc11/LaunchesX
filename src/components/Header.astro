@@ -1,25 +1,81 @@
 ---
 import HeaderButton from "./HeaderButton.astro";
-import {Counter} from "./Counter"
 ---
 
-<header transition:persist="true" class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6 ">
-    <div class="text-white text-center mx-auto mb-8 lg:mb-16">
-        <h2 class="font-extrabold text-6xl tracking-tight mb-4 lg:mb-12">SpaceX Launches 🚀</h2>
-        <p class="font-light  sm:text-xl">All the information you need to know about SpaceX launches.</p>
-    </div>
-   <!--  <Counter client:visible /> -->
-    <nav class="flex flex-col md:flex-row justify-around items-center w-full text-center gap-2 sm:gap-4 ">
-     
-
-        <HeaderButton href="/">
-            <svg slot="iconBefore" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rocket"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /><path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /><path d="M15 9m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
-            Últimos lanzamientos</HeaderButton>
-            <HeaderButton href="/upcoming">
-                <svg slot="iconBefore" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clock-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20.984 12.535a9 9 0 1 0 -8.431 8.448" /><path d="M12 7v5l3 3" /><path d="M19 16v6" /><path d="M22 19l-3 3l-3 -3" /></svg>
-                Siguientes lanzamientos</HeaderButton>
-                <HeaderButton href="/about">
-                    <svg  slot="iconBefore" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-hexagon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
-                    Sobre nosotros</HeaderButton>
-    </nav>
+<header
+  transition:persist="true"
+  class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6"
+>
+  <div class="text-white text-center mx-auto mb-8 lg:mb-16">
+    <h2 class="font-extrabold text-6xl tracking-tight mb-4 lg:mb-12">
+      SpaceX Launches 🚀
+    </h2>
+    <p class="font-light sm:text-xl">
+      All the information you need to know about SpaceX launches.
+    </p>
+  </div>
+  <!--  <Counter client:visible /> -->
+  <nav
+    class="flex flex-col md:flex-row justify-around items-center w-full text-center gap-2 sm:gap-4"
+  >
+    <HeaderButton href="/">
+      <svg
+        slot="iconBefore"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-rocket"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+          d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3"
+        ></path><path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3"></path><path
+          d="M15 9m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path></svg
+      >
+      Últimos lanzamientos</HeaderButton
+    >
+    <HeaderButton href="/upcoming">
+      <svg
+        slot="iconBefore"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-clock-down"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+          d="M20.984 12.535a9 9 0 1 0 -8.431 8.448"></path><path d="M12 7v5l3 3"
+        ></path><path d="M19 16v6"></path><path d="M22 19l-3 3l-3 -3"
+        ></path></svg
+      >
+      Siguientes lanzamientos</HeaderButton
+    >
+    <HeaderButton href="/about">
+      <svg
+        slot="iconBefore"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-info-hexagon"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+          d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z"
+        ></path><path d="M12 9h.01"></path><path d="M11 12h1v4h1"></path></svg
+      >
+      Sobre nosotros</HeaderButton
+    >
+  </nav>
 </header>
